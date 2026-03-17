@@ -16,12 +16,16 @@ export default function Header() {
         </div>
 
         {/* Navigation Links */}
-        <nav className="hidden md:flex gap-8 items-center">
+        <nav className="hidden md:flex gap-6 items-center">
           {['Home', 'About', 'Service', 'Contact'].map((item) => (
             <Link 
               key={item} 
               href={`#${item.toLowerCase()}`}
-              className="text-white hover:text-yellow-400 font-bold uppercase transition-colors"
+              className={`font-bold uppercase transition-colors text-sm ${
+                item === 'Home' 
+                ? 'text-yellow-400' // This marks "Home" as active
+                : 'text-white hover:text-yellow-400'
+              }`}
             >
               {item}
             </Link>
