@@ -16,12 +16,12 @@ export default function About() {
           className="space-y-8"
         >
           <div className="space-y-2">
-            <h2 className="text-yellow-400 text-5xl font-black uppercase tracking-tighter">
+            <h2 className="text-[#ffcc00] text-6xl md:text-7xl font-black uppercase tracking-tighter leading-none">
               About 
             </h2>
           </div>
           
-          <p className="text-gray-300 text-lg leading-relaxed font-light">
+          <p className="text-gray-300 text-lg md:text-xl leading-relaxed max-w-lg font-medium">
             "At Apex Fitness, we are more than just a gym; we are a dedicated local community 
             committed to helping you reach your peak physical potential. Established in 2023, 
             our facility was built to provide a high-energy environment where local athletes 
