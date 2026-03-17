@@ -1,13 +1,15 @@
-import Header from './components/Header';
-import Hero from './components/Hero';
-import About from './components/About';
+import About from "./components/About";
+import Header from "./components/Hero";
+import Hero from "./components/Home";
+import Service from "./components/Service";
 
 export default function Home() {
   return (
     <main>
       <Header />
-i      <Hero />
-      <About />
+      <Hero />  
+      <About/>
+      <Service/>
     </main>
   );
 }
