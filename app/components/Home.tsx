@@ -2,9 +2,9 @@
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 
-export default function Hero() {
+export default function Home() {
   return (
-    <section id="home" className="relative h-screen flex items-center justify-center overflow-hidden">
+    <section id="home" className="relative h-screen flex items-center justify-center overflow-hidden bg-white dark:bg-black transition-colors duration-500">
       <motion.div 
         initial={{ scale: 1.1, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
@@ -18,7 +18,8 @@ export default function Hero() {
           className="object-cover"
           priority
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
+        {/* Dynamic Gradient: White-ish in light mode, Black in dark mode */}
+        <div className="absolute inset-0 bg-gradient-to-t from-white/80 via-white/20 to-transparent dark:from-black dark:via-black/40 dark:to-transparent transition-all duration-500"></div>
       </motion.div>
 
       {/* Content Container */}
@@ -27,17 +28,17 @@ export default function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="text-5xl md:text-7xl font-extrabold text-white uppercase leading-tight"
+          className="text-5xl md:text-7xl font-extrabold text-gray-900 dark:text-white uppercase leading-tight transition-colors duration-500"
         >
           Achieve Your Peak <br />
-          At <span className="text-yellow-400">Apex Fitness</span>
+          At <span className="text-yellow-600 dark:text-yellow-400">Apex Fitness</span>
         </motion.h1>
 
         <motion.p 
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 0.8 }}
-          className="mt-6 text-gray-300 max-w-xl mx-auto text-lg italic"
+          className="mt-6 text-gray-700 dark:text-gray-300 max-w-xl mx-auto text-lg italic transition-colors duration-500"
         >
           "Unleash Your Full Potential. State-of-the-art facility, elite trainers, and flexible plans."
         </motion.p>
@@ -50,7 +51,7 @@ export default function Hero() {
         >
           <button 
             onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-            className="bg-yellow-400 text-black px-10 py-4 rounded-xl font-bold text-xl hover:bg-yellow-500 transition-all transform hover:scale-105 active:scale-95 shadow-lg shadow-yellow-400/20"
+            className="bg-yellow-500 dark:bg-yellow-400 text-black px-10 py-4 rounded-xl font-bold text-xl hover:bg-yellow-600 dark:hover:bg-yellow-500 transition-all transform hover:scale-105 active:scale-95 shadow-lg shadow-yellow-400/20"
           >
             Join Now
           </button>

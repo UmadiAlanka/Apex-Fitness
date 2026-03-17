@@ -27,8 +27,8 @@ const services = [
 
 export default function Service() {
   return (
-    <section id="service" className="relative py-24 px-6 overflow-hidden">
-      {/* Background Image - Matches Home section branding */}
+    <section id="service" className="relative py-24 px-6 overflow-hidden transition-colors duration-500 bg-white dark:bg-black">
+      {/* Background Image Container */}
       <div className="absolute inset-0 z-0">
         <Image 
           src="/bg.jpg" 
@@ -36,7 +36,8 @@ export default function Service() {
           fill 
           className="object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-black/40"></div>
+        {/* Dynamic Overlay: Light-tinted in light mode, Dark-tinted in dark mode */}
+        <div className="absolute inset-0 bg-white/70 dark:bg-black/60 transition-all duration-500"></div>
       </div>
 
       <div className="max-w-7xl mx-auto relative z-10">
@@ -45,7 +46,7 @@ export default function Service() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-[#ffcc00] text-6xl md:text-7xl font-black uppercase text-center mb-16 tracking-tighter"
+          className="text-yellow-600 dark:text-[#ffcc00] text-6xl md:text-7xl font-black uppercase text-center mb-16 tracking-tighter"
         >
           Service
         </motion.h2>
@@ -59,7 +60,8 @@ export default function Service() {
               transition={{ duration: 0.5, delay: index * 0.1 }}
               viewport={{ once: true }}
               whileHover={{ scale: 1.02 }}
-              className="bg-[#d9d9d9] p-10 rounded-3xl flex flex-col items-center text-center shadow-2xl"
+              
+              className="bg-gray-100 dark:bg-[#d9d9d9] p-10 rounded-3xl flex flex-col items-center text-center shadow-2xl border border-gray-200 dark:border-white/10 transition-colors duration-500"
             >
               {/* Icon Container */}
               <div className="relative w-24 h-24 mb-6">
@@ -71,10 +73,10 @@ export default function Service() {
                 />
               </div>
               
-              <h3 className="text-[#b38f00] text-2xl font-black uppercase mb-2 leading-none">
+              <h3 className="text-yellow-700 dark:text-[#b38f00] text-2xl font-black uppercase mb-2 leading-none">
                 {service.title}
               </h3>
-              <p className="text-black text-lg font-medium">
+              <p className="text-gray-800 dark:text-black text-lg font-medium">
                 {service.description}
               </p>
             </motion.div>
