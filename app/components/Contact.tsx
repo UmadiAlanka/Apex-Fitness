@@ -76,22 +76,32 @@ export default function Contact() {
                 ></iframe>
               </div>
               
-              <div className="flex items-center justify-between">
+              <div className="flex items-center justify-between mt-6">
                 <div className="flex gap-4">
-                  {/* Social Media Icons - Replace with your Image components if you have files for these too */}
-                  <div className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center cursor-pointer hover:scale-110 transition">f</div>
-                  <div className="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center cursor-pointer hover:scale-110 transition">w</div>
-                  <div className="w-10 h-10 bg-gradient-to-tr from-yellow-500 to-purple-600 rounded-full flex items-center justify-center cursor-pointer hover:scale-110 transition">i</div>
+
+                    <a href="#" target="_blank" rel="noreferrer" className="relative w-10 h-10 hover:scale-110 transition-transform">
+                        <Image src="/Contact-icons/facebook.png" alt="Facebook" fill className="object-contain" />
+                    </a>
+                        
+                    <a href="#" target="_blank" rel="noreferrer" className="relative w-10 h-10 hover:scale-110 transition-transform">
+                        <Image src="/Contact-icons/whatsapp.png" alt="WhatsApp" fill className="object-contain" />
+                    </a>
+                    {/* Instagram Icon */}
+                    <a href="#" target="_blank" rel="noreferrer" className="relative w-10 h-10 hover:scale-110 transition-transform">
+                        <Image src="/Contact-icons/instagram.png" alt="Instagram" fill className="object-contain" />
+                    </a>
                 </div>
-                <p className="text-xs font-bold text-gray-400 uppercase tracking-widest">Apex Fitness-2023</p>
-              </div>
+                <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">
+                    Apex Fitness-2023
+                    </p>
+                </div>
             </div>
           </div>
 
           {/* Right Side: Form Panel */}
           <div className="bg-[#4a4631] p-10 md:p-14">
             <form onSubmit={handleSubmit} className="space-y-6">
-              {/* ... input fields stay the same ... */}
+             
               <div>
                 <label className="block text-white text-lg font-bold mb-2">Name</label>
                 <input type="text" placeholder="Name" required className="w-full p-4 bg-[#8b8771] rounded-xl border-none focus:ring-2 focus:ring-yellow-400 outline-none text-white placeholder-gray-300 transition-all" />
