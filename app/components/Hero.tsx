@@ -6,7 +6,7 @@ export default function Hero() {
       {/* Background Image with Dark Overlay */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="/bg.jpg" 
+          src="/hero-bg.jpg" 
           alt="Gym Training"
           fill
           className="object-cover"

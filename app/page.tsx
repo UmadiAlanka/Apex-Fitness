@@ -1,10 +1,11 @@
 import Header from './components/Header';
+import Hero from './components/Hero';
 
 export default function Home() {
   return (
     <main>
       <Header />
-      {/* We will add About, Service, and Contact next */}
+      <Hero />
     </main>
   );
 }
