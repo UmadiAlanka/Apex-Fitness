@@ -45,7 +45,7 @@ export default function About() {
             viewport={{ once: true }}
             className="col-span-7 row-span-2 relative rounded-3xl overflow-hidden border border-white/10"
           >
-            <Image src="/about-1.jpg" alt="Gym" fill className="object-cover hover:scale-105 transition-transform duration-700" />
+            <Image src="/About-imgs/about-1.jpg" alt="Gym" fill className="object-cover hover:scale-105 transition-transform duration-700" />
           </motion.div>
 
           <motion.div 
@@ -55,7 +55,7 @@ export default function About() {
             viewport={{ once: true }}
             className="col-span-5 row-span-1 relative rounded-3xl overflow-hidden border border-white/10"
           >
-            <Image src="/about-2.jpg" alt="Training" fill className="object-cover hover:scale-105 transition-transform duration-700" />
+            <Image src="/About-imgs/about-2.jpg" alt="Training" fill className="object-cover hover:scale-105 transition-transform duration-700" />
           </motion.div>
 
           
@@ -66,7 +66,7 @@ export default function About() {
             viewport={{ once: true }}
             className="col-span-5 row-span-1 relative rounded-3xl overflow-hidden border border-white/10"
           >
-            <Image src="/about-3.jpg" alt="Equipment" fill className="object-cover hover:scale-105 transition-transform duration-700" />
+            <Image src="/About-imgs/about-3.jpg" alt="Equipment" fill className="object-cover hover:scale-105 transition-transform duration-700" />
           </motion.div>
         </div>
 

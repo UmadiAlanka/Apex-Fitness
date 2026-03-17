@@ -6,22 +6,22 @@ const services = [
   {
     title: "Personal Training",
     description: "Focus on custom plans",
-    icon: "/personal-training.png",
+    icon: "/Service-icons/personal-training.png",
   },
   {
     title: "Group Classes",
     description: "Dynamic, energetic sessions",
-    icon: "/group-classes.png",
+    icon: "/Service-icons/group-classes.png",
   },
   {
     title: "Strength & Conditioning",
     description: "Optimize performance",
-    icon: "/strength.png",
+    icon: "/Service-icons/strength.png",
   },
   {
     title: "Membership Plans",
     description: "Transparent, flexible options",
-    icon: "/membership.png",
+    icon: "/Service-icons/membership.png",
   },
 ];
 
