@@ -18,28 +18,28 @@ Fully Responsive: Optimized for desktop, tablet, and mobile devices.
 Contact Integration: Built-in contact form and location details for easy communication.
 
 ## Tech Stack
-Frontend: React.js / Next.js
+Frontend: React.js / Next.js<br>
 
-Styling: Tailwind CSS (or your preferred CSS framework)
+Styling: Tailwind CSS (or your preferred CSS framework)<br>
 
 Deployment: Vercel
 
 
 ##Getting Started
-Prerequisites
+Prerequisites<br>
 Node.js (v18.0.0 or higher)
 
 npm or yarn
 
 ## Installation
-Clone the repository:
+Clone the repository:<br>
 
-Bash
-git clone https://github.com/UmadiAlanka/apex-fitness.git
+Bash<br>
+git clone https://github.com/UmadiAlanka/apex-fitness.git<br>
 Navigate to the project directory:
 
-Bash
-cd apex-fitness
+Bash<br>
+cd apex-fitness<br>
 Install dependencies:
 
 Bash <br> 
