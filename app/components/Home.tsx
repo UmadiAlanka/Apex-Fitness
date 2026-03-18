@@ -1,8 +1,33 @@
 "use client";
+import { useState, useEffect } from 'react'; // Added hooks
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 
 export default function Home() {
+  // --- API STATE ---
+  const [quote, setQuote] = useState("Unleash Your Full Potential. State-of-the-art facility, elite trainers, and flexible plans.");
+  const [loading, setLoading] = useState(true);
+
+  // --- FETCH API DATA ---
+  useEffect(() => {
+    const fetchQuote = async () => {
+      try {
+        // Using a proxy to bypass CORS issues for your demo
+        const res = await fetch(`https://api.allorigins.win/get?url=${encodeURIComponent('https://zenquotes.io/api/random')}`);
+        const data = await res.json();
+        const quoteData = JSON.parse(data.contents)[0];
+        
+        // Update the quote with the dynamic data
+        setQuote(`${quoteData.q} — ${quoteData.a}`);
+      } catch (error) {
+        console.log("API Error, showing default text");
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchQuote();
+  }, []);
+
   return (
     <section id="home" className="relative h-screen flex items-center justify-center overflow-hidden bg-white dark:bg-black transition-colors duration-500">
       <motion.div 
@@ -29,19 +54,22 @@ export default function Home() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="text-5xl md:text-7xl font-extrabold text-black-900 dark:text-white uppercase leading-tight transition-colors duration-500"
+          className="text-5xl md:text-7xl font-extrabold text-gray-900 dark:text-white uppercase leading-tight transition-colors duration-500"
         >
           Achieve Your Peak <br />
           At <span className="text-yellow-600 dark:text-yellow-400">Apex Fitness</span>
         </motion.h1>
 
+        {/* Dynamic Quote Section */}
         <motion.p 
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 0.8 }}
-          className="mt-6 text-dark-700 dark:text-gray-300 max-w-xl mx-auto text-lg italic transition-colors duration-500"
+          className={`mt-6 max-w-xl mx-auto text-lg italic transition-colors duration-500 ${
+            loading ? "text-gray-400 animate-pulse" : "text-gray-700 dark:text-gray-300"
+          }`}
         >
-          "Unleash Your Full Potential. State-of-the-art facility, elite trainers, and flexible plans."
+          "{quote}"
         </motion.p>
         
         <motion.div 

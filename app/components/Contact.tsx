@@ -9,8 +9,6 @@ export default function Contact() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setSubmitted(true);
-    // You can remove this timeout if you want the success message to stay visible
-    // setTimeout(() => setSubmitted(false), 5000); 
   };
 
   return (
@@ -26,7 +24,7 @@ export default function Contact() {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 overflow-hidden rounded-3xl border border-gray-300 dark:border-white/10 shadow-2xl">
           
-          {/* Left Side: Info Panel (STAYS THE SAME) */}
+          {/* Left Side: Info Panel */}
           <div className="bg-[#d6d0bc] dark:bg-[#3e3a28] p-10 md:p-14 flex flex-col justify-between transition-colors duration-500">
             <div className="space-y-10">
               <div className="flex items-center gap-6">
@@ -63,7 +61,7 @@ export default function Contact() {
             <div className="mt-12 space-y-6">
               <div className="w-full h-48 bg-black/10 dark:bg-black/40 rounded-xl overflow-hidden border border-black/10 dark:border-white/5 transition-colors duration-500">
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.0123456789!2d79.987654321!3d7.012345678!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zN8KwMDAnNDQuNCJOIDc5wrA1OScyNS42IkU!5e0!3m2!1sen!2slk!4v1234567890"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3959.349633634567!2d79.9926868750438!3d7.08540959291753!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae2fb9f2c6e736b%3A0x6b6937e2831e5f8e!2sYakkala!5e0!3m2!1sen!2slk!4v1710740000000!5m2!1sen!2slk"
                   width="100%"
                   height="100%"
                   style={{ border: 0, filter: 'grayscale(100%) invert(90%) contrast(90%)' }} 
@@ -83,8 +81,8 @@ export default function Contact() {
             </div>
           </div>
 
-          {/* Right Side: Form Panel (UPDATED FOR SUCCESS MESSAGE) */}
-          <div className="bg-[#c8c2a8] dark:bg-[#4a4631] p-10 md:p-14 transition-colors duration-500 flex flex-col justify-center">
+          {/* Right Side: Form Panel */}
+          <div className="bg-[#c8c2a8] dark:bg-[#4a4631] p-10 md:p-14 transition-colors duration-500 flex flex-col justify-center min-h-[500px]">
             <AnimatePresence mode="wait">
               {!submitted ? (
                 <motion.form 
@@ -99,10 +97,17 @@ export default function Contact() {
                     <label className="block text-gray-800 dark:text-white text-lg font-bold mb-2 uppercase">Name</label>
                     <input type="text" placeholder="Your Name" required className="w-full p-4 bg-[#a8a28e] dark:bg-[#8b8771] rounded-xl border-none focus:ring-2 focus:ring-yellow-400 outline-none text-gray-900 dark:text-white placeholder-gray-600 dark:placeholder-gray-300 transition-all" />
                   </div>
+                  
                   <div>
                     <label className="block text-gray-800 dark:text-white text-lg font-bold mb-2 uppercase">Email</label>
-                    <input type="email" placeholder="Your Email" required className="w-full p-4 bg-[#a8a28e] dark:bg-[#8b8771] rounded-xl border-none focus:ring-2 focus:ring-yellow-400 outline-none text-gray-900 dark:text-white placeholder-gray-600 dark:placeholder-gray-300 transition-all" />
+                    <input 
+                      type="email" 
+                      placeholder="Your Email" 
+                      required 
+                      className="w-full p-4 bg-[#a8a28e] dark:bg-[#8b8771] rounded-xl border-none focus:ring-2 focus:ring-yellow-400 outline-none text-gray-900 dark:text-white placeholder-gray-600 dark:placeholder-gray-300 transition-all autofill:shadow-[0_0_0_100px_#a8a28e_inset] dark:autofill:shadow-[0_0_0_100px_#8b8771_inset]" 
+                    />
                   </div>
+                  
                   <div>
                     <label className="block text-gray-800 dark:text-white text-lg font-bold mb-2 uppercase">Message</label>
                     <textarea rows={4} placeholder="Your Message" required className="w-full p-4 bg-[#a8a28e] dark:bg-[#8b8771] rounded-xl border-none focus:ring-2 focus:ring-yellow-400 outline-none text-gray-900 dark:text-white placeholder-gray-600 dark:placeholder-gray-300 transition-all" />
@@ -119,20 +124,20 @@ export default function Contact() {
                 /* The Success Message UI */
                 <motion.div 
                   key="success-message"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className="text-center space-y-4"
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  className="text-center space-y-6"
                 >
-                  <div className="w-24 h-24 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg shadow-green-500/20">
+                  <div className="w-24 h-24 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-6 shadow-xl shadow-green-500/20">
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={4} d="M5 13l4 4L19 7" />
                     </svg>
                   </div>
                   <h3 className="text-4xl font-black text-gray-900 dark:text-[#ffcc00] uppercase tracking-tighter">Awesome!</h3>
-                  <p className="text-gray-800 dark:text-gray-200 text-xl font-medium">Your message has been sent. We'll get back to you soon.</p>
+                  <p className="text-gray-800 dark:text-gray-200 text-xl font-medium">Your message has been sent. <br/> We'll get back to you soon.</p>
                   <button 
                     onClick={() => setSubmitted(false)}
-                    className="mt-6 text-yellow-800 dark:text-yellow-400 font-bold uppercase underline hover:scale-105 transition-transform"
+                    className="mt-8 text-yellow-900 dark:text-yellow-400 font-bold uppercase underline hover:scale-105 transition-transform"
                   >
                     Send another message
                   </button>
