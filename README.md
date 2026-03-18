@@ -42,12 +42,13 @@ Bash
 cd apex-fitness
 Install dependencies:
 
-Bash
-npm install
+Bash <br> 
+npm install<br> 
 Run the development server:
 
-Bash
-npm run dev
+
+Bash<br> 
+npm run dev<br> 
 Open http://localhost:3000 in your browser.
 
 ## Author
