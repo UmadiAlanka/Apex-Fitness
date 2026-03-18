@@ -1,3 +1,4 @@
+import BMICalculator from "./components/BMI"; 
 import About from "./components/About";
 import Contact from "./components/Contact";
 import Header from "./components/Header";
@@ -11,6 +12,7 @@ export default function Home() {
       <Hero />  
       <About/>
       <Service/>
+      <BMICalculator/>
       <Contact/>
     </main>
   );
