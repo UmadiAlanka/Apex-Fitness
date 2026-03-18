@@ -1,14 +1,35 @@
 "use client";
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
+import emailjs from '@emailjs/browser';
 
 export default function Contact() {
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
+  const formRef = useRef<HTMLFormElement>(null);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+    setLoading(true);
+    setError('');
+
+    try {
+      await emailjs.sendForm(
+        'service_me14rt9',
+        'template_mtee82r',
+        formRef.current!,
+        '7bUBUWoLYx7xUUkfr'
+      );
+      setSubmitted(true);
+    } catch (err: any) {
+      const message = err?.text || err?.status || JSON.stringify(err);
+      console.error('EmailJS Error:', message);
+      setError('Something went wrong. Please try again.');
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -85,43 +106,73 @@ export default function Contact() {
           <div className="bg-[#c8c2a8] dark:bg-[#4a4631] p-10 md:p-14 transition-colors duration-500 flex flex-col justify-center min-h-[500px]">
             <AnimatePresence mode="wait">
               {!submitted ? (
-                <motion.form 
+                <motion.form
                   key="contact-form"
+                  ref={formRef}
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0, scale: 0.95 }}
-                  onSubmit={handleSubmit} 
+                  onSubmit={handleSubmit}
                   className="space-y-6"
                 >
+                  
+                  <input
+                    type="hidden"
+                    name="subject"
+                    value="New Inquiry from Apex Fitness Website"
+                  />
+
                   <div>
                     <label className="block text-gray-800 dark:text-white text-lg font-bold mb-2 uppercase">Name</label>
-                    <input type="text" placeholder="Your Name" required className="w-full p-4 bg-[#a8a28e] dark:bg-[#8b8771] rounded-xl border-none focus:ring-2 focus:ring-yellow-400 outline-none text-gray-900 dark:text-white placeholder-gray-600 dark:placeholder-gray-300 transition-all" />
+                    
+                    <input
+                      type="text"
+                      name="name"
+                      placeholder="Your Name"
+                      required
+                      className="w-full p-4 bg-[#a8a28e] dark:bg-[#8b8771] rounded-xl border-none focus:ring-2 focus:ring-yellow-400 outline-none text-gray-900 dark:text-white placeholder-gray-600 dark:placeholder-gray-300 transition-all"
+                    />
                   </div>
                   
                   <div>
                     <label className="block text-gray-800 dark:text-white text-lg font-bold mb-2 uppercase">Email</label>
-                    <input 
-                      type="email" 
-                      placeholder="Your Email" 
-                      required 
-                      className="w-full p-4 bg-[#a8a28e] dark:bg-[#8b8771] rounded-xl border-none focus:ring-2 focus:ring-yellow-400 outline-none text-gray-900 dark:text-white placeholder-gray-600 dark:placeholder-gray-300 transition-all autofill:shadow-[0_0_0_100px_#a8a28e_inset] dark:autofill:shadow-[0_0_0_100px_#8b8771_inset]" 
+                    
+                    <input
+                      type="email"
+                      name="email"
+                      placeholder="Your Email"
+                      required
+                      className="w-full p-4 bg-[#a8a28e] dark:bg-[#8b8771] rounded-xl border-none focus:ring-2 focus:ring-yellow-400 outline-none text-gray-900 dark:text-white placeholder-gray-600 dark:placeholder-gray-300 transition-all autofill:shadow-[0_0_0_100px_#a8a28e_inset] dark:autofill:shadow-[0_0_0_100px_#8b8771_inset]"
                     />
                   </div>
                   
                   <div>
                     <label className="block text-gray-800 dark:text-white text-lg font-bold mb-2 uppercase">Message</label>
-                    <textarea rows={4} placeholder="Your Message" required className="w-full p-4 bg-[#a8a28e] dark:bg-[#8b8771] rounded-xl border-none focus:ring-2 focus:ring-yellow-400 outline-none text-gray-900 dark:text-white placeholder-gray-600 dark:placeholder-gray-300 transition-all" />
+                    
+                    <textarea
+                      rows={4}
+                      name="message"
+                      placeholder="Your Message"
+                      required
+                      className="w-full p-4 bg-[#a8a28e] dark:bg-[#8b8771] rounded-xl border-none focus:ring-2 focus:ring-yellow-400 outline-none text-gray-900 dark:text-white placeholder-gray-600 dark:placeholder-gray-300 transition-all"
+                    />
                   </div>
 
-                  <button 
+                  {/* Error message */}
+                  {error && (
+                    <p className="text-red-500 font-semibold text-sm text-center">{error}</p>
+                  )}
+
+                  <button
                     type="submit"
-                    className="w-full py-5 bg-[#ffcc00] text-black hover:bg-yellow-500 rounded-xl font-black text-3xl uppercase tracking-tighter transition-all transform active:scale-95 shadow-xl"
+                    disabled={loading}
+                    className="w-full py-5 bg-[#ffcc00] text-black hover:bg-yellow-500 rounded-xl font-black text-3xl uppercase tracking-tighter transition-all transform active:scale-95 shadow-xl disabled:opacity-60 disabled:cursor-not-allowed"
                   >
-                    Submit
+                    {loading ? 'Sending...' : 'Submit'}
                   </button>
                 </motion.form>
               ) : (
-                /* The Success Message UI */
+                /* Success Message */
                 <motion.div 
                   key="success-message"
                   initial={{ opacity: 0, scale: 0.8 }}
