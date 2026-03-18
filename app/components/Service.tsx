@@ -27,18 +27,25 @@ const services = [
 
 export default function Service() {
   return (
-    <section id="service" className="relative py-24 px-6 overflow-hidden transition-colors duration-500 bg-white dark:bg-black">
-      {/* Background Image Container */}
-      <div className="absolute inset-0 z-0">
+    <section id="service" className="relative py-24 px-6 overflow-hidden bg-white dark:bg-black transition-colors duration-500">
+      
+      {/* Background Image Container - EXACT MATCH TO HOME */}
+      <motion.div 
+        initial={{ scale: 1.1, opacity: 0 }}
+        whileInView={{ scale: 1, opacity: 1 }}
+        transition={{ duration: 1.5 }}
+        viewport={{ once: true }}
+        className="absolute inset-0 z-0"
+      >
         <Image 
           src="/bg.jpg" 
           alt="Gym Background" 
           fill 
           className="object-cover"
         />
-        {/* Dynamic Overlay: Light-tinted in light mode, Dark-tinted in dark mode */}
-        <div className="absolute inset-0 bg-white/70 dark:bg-black/60 transition-all duration-500"></div>
-      </div>
+        {/* Updated Overlay: Exactly matching the Home section logic */}
+        <div className="absolute inset-0 bg-gradient-to-t from-white/80 via-white/20 to-transparent dark:from-black dark:via-black/40 dark:to-transparent transition-all duration-500"></div>
+      </motion.div>
 
       <div className="max-w-7xl mx-auto relative z-10">
         <motion.h2 
@@ -60,8 +67,7 @@ export default function Service() {
               transition={{ duration: 0.5, delay: index * 0.1 }}
               viewport={{ once: true }}
               whileHover={{ scale: 1.02 }}
-              
-              className="bg-gray-100 dark:bg-[#d9d9d9] p-10 rounded-3xl flex flex-col items-center text-center shadow-2xl border border-gray-200 dark:border-white/10 transition-colors duration-500"
+              className="bg-white/80 dark:bg-[#d9d9d9] backdrop-blur-sm p-10 rounded-3xl flex flex-col items-center text-center shadow-2xl border border-gray-200 dark:border-white/10 transition-colors duration-500"
             >
               {/* Icon Container */}
               <div className="relative w-24 h-24 mb-6">
@@ -76,7 +82,7 @@ export default function Service() {
               <h3 className="text-yellow-700 dark:text-[#b38f00] text-2xl font-black uppercase mb-2 leading-none">
                 {service.title}
               </h3>
-              <p className="text-gray-800 dark:text-black text-lg font-medium">
+              <p className="text-gray-900 dark:text-black text-lg font-medium">
                 {service.description}
               </p>
             </motion.div>
