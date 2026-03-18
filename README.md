@@ -25,7 +25,7 @@ Styling: Tailwind CSS (or your preferred CSS framework)<br>
 Deployment: Vercel
 
 
-##Getting Started
+## Getting Started
 Prerequisites<br>
 Node.js (v18.0.0 or higher)
 
