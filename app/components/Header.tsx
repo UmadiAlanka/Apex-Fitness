@@ -12,27 +12,32 @@ export default function Header() {
 
   useEffect(() => {
     setMounted(true);
-    
-    const handleScroll = () => {
-      // THE KEY: Add 'bmi' to this array
-      const sections = ['home', 'about', 'service', 'bmi', 'contact'];
-      const scrollPosition = window.scrollY + 150; 
-      
-      sections.forEach((section) => {
-        const element = document.getElementById(section);
-        if (element) {
-          const offsetTop = element.offsetTop;
-          const height = element.offsetHeight;
 
-          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + height) {
-            setActiveSection(section);
-          }
+    // This is the "Intersection Observer" logic
+    const observerOptions = {
+      root: null,
+      rootMargin: '-40% 0px -40% 0px', // Only looks at the center 20% of the screen
+      threshold: 0,
+    };
+
+    const observerCallback = (entries: IntersectionObserverEntry[]) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setActiveSection(entry.target.id);
         }
       });
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+    // Tell the observer which sections to watch
+    const sections = ['home', 'about', 'service', 'bmi', 'contact'];
+    sections.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+
+    return () => observer.disconnect();
   }, []);
 
   if (!mounted) return null;
@@ -45,7 +50,6 @@ export default function Header() {
         </div>
 
         <nav className="hidden md:flex gap-8 items-center">
-          {/* THE KEY: Add 'BMI'*/}
           {['Home', 'About', 'Service', 'BMI', 'Contact'].map((item) => {
             const lowerItem = item.toLowerCase();
             const isActive = activeSection === lowerItem;
@@ -65,7 +69,7 @@ export default function Header() {
             );
           })}
 
-          <button onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')} className="p-2">
+          <button onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')} className="p-2 ml-4 bg-yellow-400/10 rounded-full border border-yellow-400/20 active:scale-90">
             {theme === 'dark' ? <Sun size={18} className="text-yellow-400" /> : <Moon size={18} className="text-yellow-400" />}
           </button>
         </nav>

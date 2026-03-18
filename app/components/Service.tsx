@@ -43,7 +43,7 @@ export default function Service() {
           fill 
           className="object-cover"
         />
-        {/* Updated Overlay: Exactly matching the Home section logic */}
+        
         <div className="absolute inset-0 bg-gradient-to-t from-white/80 via-white/20 to-transparent dark:from-black dark:via-black/40 dark:to-transparent transition-all duration-500"></div>
       </motion.div>
 

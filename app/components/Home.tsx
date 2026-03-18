@@ -12,7 +12,6 @@ export default function Home() {
   useEffect(() => {
     const fetchQuote = async () => {
       try {
-        // Using a proxy to bypass CORS issues for your demo
         const res = await fetch(`https://api.allorigins.win/get?url=${encodeURIComponent('https://zenquotes.io/api/random')}`);
         const data = await res.json();
         const quoteData = JSON.parse(data.contents)[0];
@@ -54,7 +53,7 @@ export default function Home() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="text-5xl md:text-7xl font-extrabold text-gray-900 dark:text-white uppercase leading-tight transition-colors duration-500"
+          className="text-5xl md:text-7xl font-extrabold text-black-900 dark:text-white uppercase leading-tight transition-colors duration-500"
         >
           Achieve Your Peak <br />
           At <span className="text-yellow-600 dark:text-yellow-400">Apex Fitness</span>
@@ -66,7 +65,7 @@ export default function Home() {
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 0.8 }}
           className={`mt-6 max-w-xl mx-auto text-lg italic transition-colors duration-500 ${
-            loading ? "text-gray-400 animate-pulse" : "text-gray-700 dark:text-gray-300"
+            loading ? "text-gray-400 animate-pulse" : "text-black-700 dark:text-gray-300"
           }`}
         >
           "{quote}"
