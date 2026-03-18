@@ -18,8 +18,9 @@ export default function Home() {
           className="object-cover"
           priority
         />
-        {/* Dynamic Gradient: White-ish in light mode, Black in dark mode */}
-        <div className="absolute inset-0 bg-gradient-to-t from-white/80 via-white/20 to-transparent dark:from-black dark:via-black/40 dark:to-transparent transition-all duration-500"></div>
+
+        <div className="absolute inset-0 bg-gradient-to-t from-white/80 via-white/20 to-transparent dark:from-black 
+        dark:via-black/40 dark:to-transparent transition-all duration-500"></div>
       </motion.div>
 
       {/* Content Container */}
@@ -28,7 +29,7 @@ export default function Home() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="text-5xl md:text-7xl font-extrabold text-gray-900 dark:text-white uppercase leading-tight transition-colors duration-500"
+          className="text-5xl md:text-7xl font-extrabold text-black-900 dark:text-white uppercase leading-tight transition-colors duration-500"
         >
           Achieve Your Peak <br />
           At <span className="text-yellow-600 dark:text-yellow-400">Apex Fitness</span>
@@ -38,7 +39,7 @@ export default function Home() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 0.8 }}
-          className="mt-6 text-gray-700 dark:text-gray-300 max-w-xl mx-auto text-lg italic transition-colors duration-500"
+          className="mt-6 text-dark-700 dark:text-gray-300 max-w-xl mx-auto text-lg italic transition-colors duration-500"
         >
           "Unleash Your Full Potential. State-of-the-art facility, elite trainers, and flexible plans."
         </motion.p>

@@ -4,7 +4,7 @@ import Image from 'next/image';
 
 export default function About() {
   return (
-    <section id="about" className="py-24 px-6 bg-[#1a1814] text-white overflow-hidden">
+    <section id="about" className="py-24 px-6 bg-gray-100 dark:bg-[#1a1814] text-gray-900 dark:text-white overflow-hidden transition-colors duration-500">
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
         
         {/*  Content */}
@@ -16,12 +16,12 @@ export default function About() {
           className="space-y-8"
         >
           <div className="space-y-2">
-            <h2 className="text-[#ffcc00] text-6xl md:text-7xl font-black uppercase tracking-tighter leading-none">
+            <h2 className="text-yellow-600 dark:text-[#ffcc00] text-6xl md:text-7xl font-black uppercase tracking-tighter leading-none">
               About 
             </h2>
           </div>
           
-          <p className="text-gray-300 text-lg md:text-xl leading-relaxed max-w-lg font-medium">
+          <p className="text-gray-700 dark:text-gray-300 text-lg md:text-xl leading-relaxed max-w-lg font-medium">
             "At Apex Fitness, we are more than just a gym; we are a dedicated local community 
             committed to helping you reach your peak physical potential. Established in 2023, 
             our facility was built to provide a high-energy environment where local athletes 
@@ -43,7 +43,7 @@ export default function About() {
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="col-span-7 row-span-2 relative rounded-3xl overflow-hidden border border-white/10"
+            className="col-span-7 row-span-2 relative rounded-3xl overflow-hidden border border-gray-300 dark:border-white/10"
           >
             <Image src="/About-imgs/about-1.jpg" alt="Gym" fill className="object-cover hover:scale-105 transition-transform duration-700" />
           </motion.div>
@@ -53,7 +53,7 @@ export default function About() {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true }}
-            className="col-span-5 row-span-1 relative rounded-3xl overflow-hidden border border-white/10"
+            className="col-span-5 row-span-1 relative rounded-3xl overflow-hidden border border-gray-300 dark:border-white/10"
           >
             <Image src="/About-imgs/about-2.jpg" alt="Training" fill className="object-cover hover:scale-105 transition-transform duration-700" />
           </motion.div>
@@ -64,7 +64,7 @@ export default function About() {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
             viewport={{ once: true }}
-            className="col-span-5 row-span-1 relative rounded-3xl overflow-hidden border border-white/10"
+            className="col-span-5 row-span-1 relative rounded-3xl overflow-hidden border border-gray-300 dark:border-white/10"
           >
             <Image src="/About-imgs/about-3.jpg" alt="Equipment" fill className="object-cover hover:scale-105 transition-transform duration-700" />
           </motion.div>
