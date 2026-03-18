@@ -51,6 +51,30 @@ Bash<br>
 npm run dev<br> 
 Open http://localhost:3000 in your browser.
 
+### To configure EmailJS for your own deployment
+ 
+1. Create a free account at [emailjs.com](https://www.emailjs.com)
+2. Add a **Gmail Email Service** → connect your Gmail → allow **"Send email on your behalf"** permission
+3. Create an **Email Template** with these variables:
+ 
+```
+{{name}}     → sender's name
+{{email}}    → sender's email
+{{subject}}  → email subject
+{{message}}  → sender's message
+```
+ 
+4. Replace the following values in `app/components/Contact.tsx`:
+ 
+```tsx
+await emailjs.sendForm(
+  'YOUR_SERVICE_ID',   // EmailJS → Email Services → Service ID
+  'YOUR_TEMPLATE_ID',  // EmailJS → Email Templates → Template ID
+  formRef.current!,
+  'YOUR_PUBLIC_KEY'    // EmailJS → Account → General → Public Key
+);
+```
+
 ## Author
  
 Umadi Alanka
